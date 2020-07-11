@@ -39,6 +39,7 @@ class Income extends React.Component {
       })
   }
 
+
   postIncome() {
         var saldo_old = parseInt(this.state.saldo_old)
         var nominal = parseInt(this.state.nominal)
@@ -63,6 +64,9 @@ class Income extends React.Component {
                 ToastAndroid.show('Pendapatan berhasil ditambah!', ToastAndroid.SHORT)
             })
         })
+
+        this.inputNominal.clear();
+        this.inputDeskripsi.clear();
   }
   
   render() {
@@ -86,6 +90,7 @@ class Income extends React.Component {
         placeholderTextColor='lime'
         keyboardType='numeric'
         maxLength={20}
+        ref={(input) => this.inputNominal = input}
         value={this.state.nominal}
         onChangeText={value=> this.setState({nominal : value})}
         />
@@ -98,6 +103,7 @@ class Income extends React.Component {
         style={styles.input}
         keyboardType='default'
         maxLength={30}
+        ref={(input) => this.inputDeskripsi = input}
         value={this.state.deskripsi}
         onChangeText={value=> this.setState({deskripsi : value})}
         />

@@ -62,6 +62,9 @@ class Expense extends React.Component {
                     ToastAndroid.show('Pengeluaran berhasil ditambah!', ToastAndroid.SHORT)
                 })
             })
+
+            this.inputNominal.clear();
+            this.inputDeskripsi.clear();
   }
   
   render() {
@@ -83,6 +86,7 @@ class Expense extends React.Component {
         style={styles.inputNominalExpense}
         keyboardType='numeric'
         maxLength={20}
+        ref={(input) => this.inputNominal = input}
         placeholder='0'
         placeholderTextColor='red'
         value={this.state.nominal}
@@ -97,6 +101,7 @@ class Expense extends React.Component {
         style={styles.input}
         keyboardType='default'
         maxLength={30}
+        ref={(input) => this.inputDeskripsi = input}
         value={this.state.deskripsi}
         onChangeText={value=> this.setState({deskripsi : value})}
         />
